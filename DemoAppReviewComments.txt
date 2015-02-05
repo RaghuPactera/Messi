@@ -1,0 +1,74 @@
+Android Best Practices:
+
+1. Eclipse already has in-built mechanisms to automatically style for Java. But for Android, you may need to export these files
+	http://stackoverflow.com/questions/7544769/coding-style-standards-for-android
+2. Ideally, for all Android specific projects, Android Code Style Guidelines(https://source.android.com/source/code-style.html) should be followed.
+   To setup these guidelines in Eclipse, follow this link. 
+3. More Tools:
+	http://stackoverflow.com/questions/4080/what-code-analysis-tools-do-you-use-for-your-java-projects
+4. Static analysis tools I often use CPD, PMD, FindBugs, and Checkstyle
+5. Code coverage tools (Cobertura, Emma, and any others)
+
+
+
+===============================================================================
+Android Tools:
+
+Lint - Static code analysis tool
+
+Resource Review:
+
+1. AppLinkActivity is not added in Manifest File
+2. Copy sync.jpg file to mdpi and xhdpi also
+3. You can remove these if not using in dimens.xml
+
+	<dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">8dp</dimen>
+    <dimen name="padding_large">16dp</dimen>
+	
+4. ic_action_search.png can be removed if not used
+5. You can remove these if not using in string.xml
+
+    <string name="exit">Exit</string>
+    <string name="title_activity_main">Forwarded Messages</string>
+===============================================================================
+
+
+===============================================================================
+3rd Party Free Review Tools:
+
+1. FindBugs
+   More Info : http://www.methodsandtools.com/tools/findbugs.php
+
+Description	Resource	Path	Location	Type
+Write to static field com.ford.messi.sms.LockScreenActivity.instance from instance method com.ford.messi.sms.LockScreenActivity.onDestroy() [Of Concern(15), High confidence]	LockScreenActivity.java	/Messi/src/com/ford/messi/sms	line 35	FindBugs Problem (Of concern)
+Write to static field com.ford.messi.sms.LockScreenActivity.instance from instance method com.ford.messi.sms.LockScreenActivity.onCreate(Bundle) [Of Concern(15), High confidence]	LockScreenActivity.java	/Messi/src/com/ford/messi/sms	line 25	FindBugs Problem (Of concern)
+Write to static field com.ford.messi.applink.AppLinkService.service from instance method com.ford.messi.applink.AppLinkService.onCreate() [Of Concern(15), High confidence]	AppLinkService.java	/Messi/src/com/ford/messi/applink	line 315	FindBugs Problem (Of concern)
+===============================================================================
+
+
+===============================================================================
+Generic Code Review:
+
+1. You can subscribebuttons() only on HMI_FULL Firstrun. Is it required for every HMI_FULL?
+2. If there are no messages in the list, and go to More->Inbox, then Inbox shows nothing. Either it should not have Inbox in More or some message displayed if Inbox is empty.
+3. Change Android minSDKLevel in Manifest file to 10
+===============================================================================
+
+
+
+===============================================================================
+Functional Review:
+
+1. Alert of New Messsages are not coming - 30% reproduce
+2. While in Inbox, if we get new Message, it is not reflected immediately
+3. Last 2 digits of the phone number are not voiced
+===============================================================================
+
+
+
+
+
+
+
+
